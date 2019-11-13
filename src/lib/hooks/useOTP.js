@@ -45,7 +45,8 @@ const useOTP = ({ autoFocus, value, otpType, onChange, OTPLength }) => {
   // Handle pasted OTP
   const handleOnPaste = (e, data) => {
     e.preventDefault();
-    const otp = getOtpValue();
+    const otpRaw = getOtpValue();
+    const otp = otpRaw.replace(/-/g, "");
 
     // Get pastedData in an array of max size (num of inputs - current position)
     const clipboardData =
